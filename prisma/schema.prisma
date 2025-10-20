@@ -55,13 +55,13 @@ enum TableStatus {
 model OrderItem {
   id       Int   @id @default(autoincrement())
   order    Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  orderId  Int @unique
+  orderId  Int
   item     Item  @relation(fields: [itemId], references: [id])
-  itemId   Int @unique
+  itemId   Int
   quantity Int   @default(1)
-  price    Float 
+  price    Float
 
-  
+  @@unique([orderId, itemId])
 }
 
 enum OrderStatus {
